@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathos 3D - Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="sidebar d-flex flex-column justify-content-between">
+    <div>
+      <div class="text-center mb-4">
+        <i class="fas fa-user-circle fa-4x mb-2"></i>
+        <h5 class="mb-0">Usuario</h5>
+        <small>admin@pathos3d.com</small>
+      </div>
+      <a href="#" class="nav-link active" onclick="mostrar('inventario')"><i class="fas fa-box"></i> Inventario</a>
+      <a href="#" class="nav-link" onclick="mostrar('ventas')"><i class="fas fa-chart-line"></i> Ventas</a>
+      <a href="#" class="nav-link" onclick="mostrar('perfil')"><i class="fas fa-user"></i> Perfil</a>
+    </div>
+    <div class="mt-4 text-center">
+      <button class="btn btn-outline-danger btn-sm w-100">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- Inventario -->
+    <div id="inventario" class="seccion">
+      <div class="card p-4">
+        <h2>Agregar Producto</h2>
+        <form onsubmit="agregarProducto(event)">
+          <div class="mb-3">
+            <label>Selecciona un producto</label>
+            <select id="nombre" class="form-control" required>
+              <option value="Resina XYZ">Resina XYZ</option>
+              <option value="Filamento PLA">Filamento PLA</option>
+              <option value="Boquilla 0.4mm">Boquilla 0.4mm</option>
+              <option value="Placa base">Placa base</option>
+              <option value="Alcohol isopropílico">Alcohol isopropílico</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label>Cantidad</label>
+            <input type="number" id="cantidad" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label>Estado</label>
+            <select id="estado" class="form-control">
+              <option value="Disponible">Disponible</option>
+              <option value="Agotado">Agotado</option>
+            </select>
+          </div>
+          <button class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+      <div class="card p-4 mt-4">
+        <h4>Lista de Productos</h4>
+        <table class="table text-white">
+          <thead>
+            <tr><th>Nombre</th><th>Cantidad</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="tabla-productos"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Ventas -->
+    <div id="ventas" class="seccion" style="display:none;">
+      <div class="card p-4">
+        <h2>Ventas Recientes</h2>
+        <div class="row g-3 mb-3">
+          <div class="col-md-4">
+            <label for="filtroDia" class="form-label">Día</label>
+            <input type="date" class="form-control" id="filtroDia" onchange="filtrarVentas()" />
+          </div>
+          <div class="col-md-4">
+            <label for="filtroMes" class="form-label">Mes</label>
+            <select class="form-control" id="filtroMes" onchange="filtrarVentas()">
+              <option value="">-- Todos los meses --</option>
+              <option value="07">Julio</option>
+              <option value="06">Junio</option>
+              <option value="05">Mayo</option>
+            </select>
+          </div>
+        </div>
+        <div class="venta p-3" data-fecha="2025-07-10">
+          <p><strong>Producto:</strong> Resina XYZ</p>
+          <p><strong>Cantidad:</strong> 2 unidades</p>
+          <p><strong>Total:</strong> $80.000</p>
+          <p><strong>Fecha:</strong> 2025-07-10</p>
+        </div>
+        <div class="venta p-3" data-fecha="2025-06-15">
+          <p><strong>Producto:</strong> Filamento PLA</p>
+          <p><strong>Cantidad:</strong> 3 unidades</p>
+          <p><strong>Total:</strong> $45.000</p>
+          <p><strong>Fecha:</strong> 2025-06-15</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfil -->
+    <div id="perfil" class="seccion" style="display:none;">
+      <div class="card p-4">
+        <h2>Perfil de Usuario</h2>
+        <p><strong>Nombre:</strong> Andrés Piñeros</p>
+        <p><strong>Email:</strong> admin@pathos3d.com</p>
+        <p><strong>Rol:</strong> Administrador</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

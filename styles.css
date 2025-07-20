@@ -1,0 +1,70 @@
+body {
+  background-color: #12161f;
+  font-family: 'Inter', sans-serif;
+  color: #f1f1f1;
+}
+.sidebar {
+  background: #1a1f2e;
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  padding: 2rem 1rem;
+  color: white;
+}
+.sidebar .nav-link {
+  color: #cbd5e1;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  transition: 0.3s;
+}
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background-color: #2d3348;
+  color: #4ade80;
+}
+.main {
+  margin-left: 250px;
+  padding: 2rem;
+  background-color: #161b25;
+  min-height: 100vh;
+}
+.card {
+  background-color: #1e2535;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.1);
+  color: #f1f1f1;
+}
+.form-control,
+.btn {
+  border-radius: 8px;
+  background-color: #2b3244;
+  color: #f1f1f1;
+  border: none;
+}
+.btn-primary {
+  background-color: #4ade80;
+  color: #12161f;
+}
+.btn-primary:hover {
+  background-color: #3ddc68;
+}
+h2, h4 {
+  color: #4ade80;
+}
+.venta {
+  background-color: #2b3244;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+  .main {
+    margin-left: 0;
+  }
+}
